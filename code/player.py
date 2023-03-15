@@ -18,6 +18,7 @@ class Player(pygame.sprite.Sprite):
         # General setup
         self.image = self.animations[self.status][self.frame_index]
         self.rect = self.image.get_rect(center=position)
+        self.z = LAYERS['main']
 
         # Movement
         self.speed = 300
@@ -38,7 +39,7 @@ class Player(pygame.sprite.Sprite):
         self.selected_tool = self.tools[self.tool_index]
 
         # Seeds
-        self.seeds = ['corn', 'tomato']
+        self.seeds = ['wheat', 'tomato']
         self.seed_index = 0
         self.selected_seed = self.seeds[self.seed_index]
 
@@ -121,7 +122,6 @@ class Player(pygame.sprite.Sprite):
                 if self.seed_index >= len(self.seeds):
                     self.seed_index = 0
                 self.selected_seed = self.seeds[self.seed_index]
-                print(self.selected_seed)
 
     def update_timers(self):
         for timer in self.timers.values():
